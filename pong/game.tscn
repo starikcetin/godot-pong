@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://ball.tscn" type="PackedScene" id=1]
 [ext_resource path="res://racket.tscn" type="PackedScene" id=2]
+
+[sub_resource type="LineShape2D" id=1]
+normal = Vector2( 1, 0 )
+d = 410.122
 
 [node name="game" type="Node2D"]
 
@@ -15,3 +19,31 @@ position = Vector2( -300, 0 )
 
 [node name="racketRight" parent="." instance=ExtResource( 2 )]
 position = Vector2( 300, 0 )
+
+[node name="edges" type="Node2D" parent="."]
+
+[node name="top" type="Area2D" parent="edges"]
+editor/display_folded = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="edges/top"]
+shape = SubResource( 1 )
+one_way_collision_margin = 0.0
+
+[node name="bottom" type="Area2D" parent="edges"]
+editor/display_folded = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="edges/bottom"]
+shape = SubResource( 1 )
+one_way_collision_margin = 0.0
+
+[node name="left" type="Area2D" parent="edges"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="edges/left"]
+shape = SubResource( 1 )
+one_way_collision_margin = 0.0
+
+[node name="right" type="Area2D" parent="edges"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="edges/right"]
+shape = SubResource( 1 )
+one_way_collision_margin = 0.0
